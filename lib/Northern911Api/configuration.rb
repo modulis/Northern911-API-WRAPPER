@@ -1,4 +1,4 @@
-module DIDWW
+module Northern911Api
   class Configuration
     attr_accessor :auth_hash, :sandbox
 
