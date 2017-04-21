@@ -7,7 +7,7 @@ module Northern911Api
     def initialize
       @configuration = Northern911Api.configuration
       @savon = savon_client
-      @methods = savon_client.soap_actions
+      @methods = savon_client.operations
     end
 
     def method_missing(method_name, *args, &block)
