@@ -1,15 +1,13 @@
 # Northern911Api
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/Northern911Api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A simple Rails friendly API wrapper for Northern911Api's SOAP based API
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'Northern911Api'
+gem 'Northern911Api', git: 'https://github.com/modulis/Northern911Api-API-WRAPPER.git'
 ```
 
 And then execute:
@@ -21,21 +19,55 @@ Or install it yourself as:
     $ gem install Northern911Api
 
 ## Usage
+### Configuration
+First you must configure Northern911Api or you won't be able to make requests.
+```ruby
+Northern911Api.configure do |config|
+  config.vendor_code = '955' # Your api username given to you by Northern911Api
+  config.soap_passcode = 'asdlfkj()*$JFU)SDf)SDuf' # Your secret api key given to you by Northern911Api
+  config.sandbox = false # Optional. True by default, you must set it to live manually.
+end
+```
 
-TODO: Write usage instructions here
+### Building the client
+You can create a client which will inheret Northern911Api configuration automatically using
+```ruby
+client = Northern911Api::Client.new
+```
+
+If you would like to change the configuration for a specific client you'll have to do so manually:
+```ruby
+client.configuration.sandbox = false # sets this client to live mode
+```
+
+### Making calls
+A list of methods can be seen in `METHOD_TRANSLATIONS` in the client class in the source code. Making a call is as easy as:
+```ruby
+client = Northern911Api::Client.new
+client.check_pstn_number(pstn_number: 1111111)
+```
+
+### Convenience methods
+Northern911Api has a few convenience methods to use in your code:
+```ruby
+Northern911Api.configure do |config|
+  config.sandbox = true
+end
+Northern911Api.sandbox? #=> true
+Northern911Api.live? #=> false
+Northern911Api.mode #=> :sandbox (alternatively :live)
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+You have access to a developer console to use the gem interactively by running `bin/console` from the project directory.
+Please write specs for any additions, and use shared examples when possible.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/Northern911Api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/Northern911Api.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

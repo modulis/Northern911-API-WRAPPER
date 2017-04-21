@@ -33,6 +33,8 @@ module Northern911Api
       # $soap_passcode = 'asdlfkj()*$JFU)SDf)SDuf';
       # $gmdate = gmdate('Ymd'); //YYYYMMDD
       # $hash = md5($vendorCode . $soap_passcode . $gmdate);
+      gmdate = Time.now.strftime('%Y%m%d')
+      Digest::MD5.hexdigest(configuration.vendor_code + configuration.soap_passcode + gmdate)
     end
 
     def sandbox_url
