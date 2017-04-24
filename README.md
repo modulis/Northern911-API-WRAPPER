@@ -7,7 +7,7 @@ A simple Rails friendly API wrapper for Northern911Api's SOAP based API
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'Northern911Api', git: 'https://github.com/modulis/Northern911Api-API-WRAPPER.git'
+gem 'Northern911Api', git: 'https://github.com/modulis/Northern911-API-WRAPPER.git'
 ```
 
 And then execute:
@@ -23,8 +23,8 @@ Or install it yourself as:
 First you must configure Northern911Api or you won't be able to make requests.
 ```ruby
 Northern911Api.configure do |config|
-  config.vendor_code = '955' # Your api username given to you by Northern911Api
-  config.soap_passcode = 'asdlfkj()*$JFU)SDf)SDuf' # Your secret api key given to you by Northern911Api
+  config.vendor_code = '427' # Your api username given to you by Northern911Api
+  config.soap_passcode = 'mT6#Xr4@' # Your secret api key given to you by Northern911Api
   config.sandbox = false # Optional. True by default, you must set it to live manually.
 end
 ```
