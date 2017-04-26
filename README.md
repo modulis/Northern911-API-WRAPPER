@@ -44,8 +44,12 @@ client.configuration.sandbox = false # sets this client to live mode
 A list of methods can be seen in `METHOD_TRANSLATIONS` in the client class in the source code. Making a call is as easy as:
 ```ruby
 client = Northern911Api::Client.new
-client.check_pstn_number(pstn_number: 1111111)
+client.addor_update_customer(customer: {...})
 ```
+
+### Official API doc
+https://addressinfo.northern911.com/soapapidocs/
+
 
 ### Convenience methods
 Northern911Api has a few convenience methods to use in your code:

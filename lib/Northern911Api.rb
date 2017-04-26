@@ -1,6 +1,7 @@
 require "Northern911Api/version"
 require "Northern911Api/configuration"
 require 'Northern911Api/client'
+require 'Northern911Api/model/customer'
 
 module Northern911Api
   class << self
