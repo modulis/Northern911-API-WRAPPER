@@ -24,7 +24,7 @@ First you must configure Northern911Api or you won't be able to make requests.
 ```ruby
 Northern911Api.configure do |config|
   config.vendor_code = '427' # Your api username given to you by Northern911Api
-  config.soap_passcode = 'mT6#Xr4@' # Your secret api key given to you by Northern911Api
+  config.soap_passcode = '#9mB@j3X' # Your secret api key given to you by Northern911Api
   config.sandbox = false # Optional. True by default, you must set it to live manually.
 end
 ```
