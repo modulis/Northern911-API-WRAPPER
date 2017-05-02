@@ -40,8 +40,7 @@ If you would like to change the configuration for a specific client you'll have 
 client.configuration.sandbox = false # sets this client to live mode
 ```
 
-### Making calls
-A list of methods can be seen in `METHOD_TRANSLATIONS` in the client class in the source code. Making a call is as easy as:
+### Some examples
 ```ruby
 client = Northern911Api::Client.new
 client.addor_update_customer(customer: {...}) # see Customer fields below
