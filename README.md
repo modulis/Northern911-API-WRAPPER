@@ -44,7 +44,19 @@ client.configuration.sandbox = false # sets this client to live mode
 A list of methods can be seen in `METHOD_TRANSLATIONS` in the client class in the source code. Making a call is as easy as:
 ```ruby
 client = Northern911Api::Client.new
-client.addor_update_customer(customer: {...})
+client.addor_update_customer(customer: {...}) # see Customer fields below
+client.query_customer({phone_number: '5142842020'})
+client.delete_customer({phone_number: '5142842020'})
+```
+
+### Customer object should contains
+```ruby
+:city, :first_name, :last_name, :other_address_info, :phone_number, :realm_id, :postal_code_zip, :province_state, :street_name, :street_number, :suite_apt
+```
+
+### Available methods
+```ruby
+[:addor_update_customer, :delete_customer, :query_customer, :get_vendor_dump_url, :verify_customer]
 ```
 
 ### Official API doc
@@ -55,11 +67,10 @@ https://addressinfo.northern911.com/soapapidocs/
 Northern911Api has a few convenience methods to use in your code:
 ```ruby
 Northern911Api.configure do |config|
-  config.sandbox = true
+  config.vendor_code = '427' # Your api username given to you by Northern911Api
+  config.soap_passcode = '#9mB@j3X' # Your secret api key given to you by Northern911Api
+  config.sandbox = false # Optional. True by default, you must set it to live manually.
 end
-Northern911Api.sandbox? #=> true
-Northern911Api.live? #=> false
-Northern911Api.mode #=> :sandbox (alternatively :live)
 ```
 
 ## Development
@@ -69,7 +80,7 @@ Please write specs for any additions, and use shared examples when possible.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/Northern911Api.
+Bug reports and pull requests are welcome on GitHub at https://github.com/modulis/Northern911-API-WRAPPER.
 
 
 ## License

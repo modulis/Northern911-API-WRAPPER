@@ -22,6 +22,9 @@ module Northern911Api
         elsif(method_name == :query_customer)
           raw_xml = "<SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:ns1='http://tempuri.org/'><SOAP-ENV:Body><ns1:QueryCustomer><ns1:vendorCode>#{configuration.vendor_code}</ns1:vendorCode><ns1:phoneNumber>#{params[:phone_number]}</ns1:phoneNumber><ns1:hash>#{params[:hash]}</ns1:hash></ns1:QueryCustomer></SOAP-ENV:Body></SOAP-ENV:Envelope>"
           @savon.call(method_name, xml: raw_xml)
+        elsif(method_name == :delete_customer)
+          raw_xml = "<SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:ns1='http://tempuri.org/'><SOAP-ENV:Body><ns1:DeleteCustomer><ns1:vendorCode>#{configuration.vendor_code}</ns1:vendorCode><ns1:phoneNumber>#{params[:phone_number]}</ns1:phoneNumber><ns1:hash>#{params[:hash]}</ns1:hash></ns1:DeleteCustomer></SOAP-ENV:Body></SOAP-ENV:Envelope>"
+          @savon.call(method_name, xml: raw_xml)
         else
           @savon.call(method_name, message: params)
         end
